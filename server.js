@@ -1,13 +1,23 @@
 var PORT = 8000;
 var express = require('express');
-
 var app = express();
 
+var models = require('./models');
+
+models.sequelize.sync();
+
 app.get('/', function(req, res){
-	res.send('it worked')
-
+	models.Burger.findAll()
+	.then(function(burger_data){
+		//Promise based
+		//Change this to use a controller is highly recommended
+		console.log(burger_data);
+		res.send(burger_data);
+	});
 });
-app.listen(process.env.PORT || PORT, function(){
-console.log("24k magic happens on port " + PORT)
 
+//Implement the other HTTP Methods such as POST and DELETE
+
+app.listen(process.env.PORT || PORT, function(){
+	console.log("24K Magic Happens on PORT: " + PORT);
 });

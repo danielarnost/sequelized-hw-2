@@ -12,7 +12,9 @@ module.exports = {
           id: 
               {type:Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
           name: Sequelize.STRING,
-          devoured: Sequelize.BOOLEAN 
+          devoured: Sequelize.BOOLEAN,
+          createdAt: Sequelize.DATE,
+          updatedAt: Sequelize.DATE
         });
     
   },
