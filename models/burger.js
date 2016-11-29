@@ -1,17 +1,17 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Burger = sequelize.define('burger', {
-    id: {type: DataTypes.INTEGER, primaryKey: true},//hardcoded autoIncrement: true? 
-    name: DataTypes.STRING,
-    devoured: DataTypes.BOOLEAN,
-    createdAt: {type: DataTypes.DATE, allowNull: false},
-    updatedAt: {type: DataTypes.DATE, allowNull: false}
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+var Sequelize = require('sequelize');
+var configConn = require("../config/connection.js");
+
+// var Sequelize = require("sequelize")
+
+  var sequelizeBurger = configConn.define("burgersTable", {
+    id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},//hardcoded autoIncrement: true? 
+    name: {type: Sequelize.STRING},
+    devoured: {type: Sequelize.BOOLEAN, defaultValue : 0},
+    date: {type: Sequelize.DATE},
+       
   });
-  return Burger;
-};
+
+
+  sequelizeBurger.sync();
+module.exports = sequelizeBurger;
