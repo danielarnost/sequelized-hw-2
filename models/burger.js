@@ -2,7 +2,6 @@
 var Sequelize = require('sequelize');
 var configConn = require("../config/connection.js");
 
-// var Sequelize = require("sequelize")
 
   var sequelizeBurger = configConn.define("burgersTable", {
     id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},//hardcoded autoIncrement: true? 

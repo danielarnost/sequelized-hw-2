@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
-app.use(bodyParser.json({type:'application/vnd.api+json'}));
+
 
 require('./controllers/burger_controller.js')(app); 
 require('./controllers/burger_routes.js')(app);
